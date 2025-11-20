@@ -1,520 +1,2037 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Phoenix Coalition</title>
+  <meta charset="UTF-8" />
+  <title>The Phoenix Coalition | Campaign Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="The Phoenix Coalition — a post-war political movement dedicated to disciplined rebuilding, justice, and stability."
+  />
+  <!-- Optional: nice modern font (works fine on GitHub Pages) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
-    <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #020817;
+      --card: #0b1220;
+      --card-soft: #020617;
+      --accent: #f97316; /* ember */
+      --accent-soft: rgba(249, 115, 22, 0.16);
+      --accent-strong: #dc2626;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --charcoal: #111827;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.9);
+      --radius-lg: 1.5rem;
+      --radius-md: 1rem;
+      --radius-pill: 999px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #0b1120, #020617 52%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 6rem 1.25rem 4rem;
+    }
+
+    /* Header & Nav */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(20px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.98),
+        rgba(15, 23, 42, 0.92),
+        transparent
+      );
+      border-bottom: 1px solid rgba(31, 41, 55, 0.8);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 1.25rem;
+      background: conic-gradient(
+        from 200deg,
+        #f97316,
+        #facc15,
+        #dc2626,
+        #f97316
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.6),
+        0 18px 40px rgba(248, 113, 113, 0.45);
+      font-size: 1.1rem;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .logo-text span:first-child {
+      font-weight: 650;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      color: #fef2f2;
+    }
+
+    .logo-text span:last-child {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: all 0.16s ease-out;
+    }
+
+    .nav-links a:hover {
+      color: #f9fafb;
+      border-color: rgba(249, 115, 22, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .nav-cta {
+      background: radial-gradient(circle at top left, #f97316, #dc2626);
+      color: #fef2f2 !important;
+      font-weight: 600;
+      border-color: transparent !important;
+      box-shadow: 0 12px 32px rgba(248, 113, 22, 0.45);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(248, 113, 22, 0.55);
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.6fr);
+      gap: 2.75rem;
+      align-items: center;
+      padding: 3.5rem 2.25rem;
+      margin-top: 1rem;
+      border-radius: 2rem;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(248, 113, 22, 0.3), transparent 55%),
+        radial-gradient(circle at 90% 0%, rgba(239, 68, 68, 0.18), transparent 55%),
+        linear-gradient(145deg, #020617, #020617 55%, #020617);
+      border: 1px solid rgba(55, 65, 81, 0.7);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 100%, rgba(15, 23, 42, 0.9), transparent 45%);
+      mix-blend-mode: soft-light;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker span {
+      display: inline-flex;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #f97316, #dc2626);
+      box-shadow: 0 0 0 4px rgba(248, 113, 22, 0.35);
+    }
+
+    .hero-title {
+      margin: 1rem 0 0.5rem;
+      font-size: clamp(2.4rem, 3.2vw + 1.1rem, 3.25rem);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #f97316, #fbbf24, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      margin: 0.25rem 0 1.5rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 36rem;
+    }
+
+    .hero-subtitle strong {
+      color: #f9fafb;
+      font-weight: 550;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-actions a {
+      font-size: 0.8rem;
+      padding: 0.7rem 1.3rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      background: rgba(15, 23, 42, 0.92);
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.16s ease-out;
+    }
+
+    .hero-actions a.primary {
+      background: radial-gradient(circle at top left, #f97316, #dc2626);
+      border-color: transparent;
+      color: #fef2f2;
+      font-weight: 600;
+      box-shadow: 0 14px 35px rgba(248, 113, 22, 0.5);
+    }
+
+    .hero-actions a.primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 45px rgba(248, 113, 22, 0.65);
+    }
+
+    .hero-actions a.secondary:hover {
+      border-color: rgba(248, 113, 22, 0.7);
+      color: #f9fafb;
+    }
+
+    .hero-actions a span.icon {
+      font-size: 1rem;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      max-width: 28rem;
+    }
+
+    .hero-pill {
+      padding: 0.5rem 0.75rem;
+      border-radius: 999px;
+      background: radial-gradient(circle at top left, rgba(248, 113, 22, 0.22), transparent 60%);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 0.72rem;
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+    }
+
+    .hero-pill span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #facc15;
+    }
+
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      min-height: 230px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-orbit {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      border: 1px dashed rgba(75, 85, 99, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 10%, rgba(248, 250, 252, 0.04), transparent 55%);
+    }
+
+    .hero-core {
+      width: 44%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background:
+        conic-gradient(from 210deg, #f97316, #facc15, #dc2626, #f97316, #facc15);
+      box-shadow: 0 22px 60px rgba(248, 113, 22, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-core-inner {
+      position: absolute;
+      inset: 16%;
+      border-radius: inherit;
+      background: radial-gradient(circle at 50% 10%, #fef2f2, #fecaca, #7f1d1d);
+      mix-blend-mode: screen;
+      opacity: 0.85;
+    }
+
+    .hero-core-label {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #7f1d1d;
+    }
+
+    .hero-ring-label {
+      position: absolute;
+      font-size: 0.7rem;
+      color: var(--muted);
+      max-width: 9rem;
+    }
+
+    .hero-ring-label strong {
+      color: #f9fafb;
+      font-weight: 600;
+    }
+
+    .hero-ring-label.top {
+      top: 4%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .hero-ring-label.left {
+      left: -4%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: right;
+    }
+
+    .hero-ring-label.right {
+      right: -4%;
+      top: 50%;
+      transform: translate(50%, -50%);
+      text-align: left;
+    }
+
+    .hero-tag {
+      position: absolute;
+      bottom: 6%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.7rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      color: var(--muted);
+    }
+
+    /* Sections */
+
+    section {
+      margin-top: 3.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: baseline;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 650;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .section-kicker {
+      font-size: 0.75rem;
+      color: var(--muted);
+      max-width: 28rem;
+    }
+
+    .pill-label {
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.2fr);
+      gap: 1.75rem;
+    }
+
+    .card {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.4), transparent 55%),
+        linear-gradient(145deg, #020617, #020617);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 1.5rem 1.4rem;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+    }
+
+    .card-soft {
+      background: rgba(15, 23, 42, 0.88);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      padding: 1.1rem 1.15rem;
+    }
+
+    .card h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      margin: 0.3rem 0 0.3rem;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .swatches {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .swatch {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .swatch-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .swatch-dot.charcoal {
+      background: #111827;
+    }
+
+    .swatch-dot.ember {
+      background: #f97316;
+    }
+
+    .swatch-dot.accent {
+      background: #facc15;
+    }
+
+    .symbol-mark {
+      width: 72px;
+      height: 72px;
+      border-radius: 24px;
+      background: radial-gradient(circle at 20% 0%, #f97316, #dc2626 55%, #111827);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 18px 40px rgba(248, 113, 22, 0.6);
+      margin-bottom: 0.75rem;
+    }
+
+    .symbol-mark span {
+      font-size: 1.9rem;
+      filter: drop-shadow(0 4px 10px rgba(15, 23, 42, 0.7));
+    }
+
+    .symbol-caption {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .list-tight {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.4rem 0 0;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .list-tight li {
+      margin-bottom: 0.25rem;
+    }
+
+    .list-tight strong {
+      color: #e5e7eb;
+    }
+
+    .tagline {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    .candidate-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #f9fafb;
+    }
+
+    .candidate-role {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.4rem;
+    }
+
+    .candidate-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+
+    .team-grid {
+      margin-top: 0.7rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.7rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .team-grid div span.role {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #9ca3af;
+    }
+
+    .team-grid div strong {
+      color: #e5e7eb;
+    }
+
+    .team-grid a {
+      color: #f97316;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
+
+    /* Platform layout */
+
+    .platform-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 2fr);
+      gap: 1.75rem;
+    }
+
+    .platform-nav {
+      position: sticky;
+      top: 4.75rem;
+      align-self: flex-start;
+      padding: 1rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .platform-nav-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #e5e7eb;
+      margin-bottom: 0.5rem;
+    }
+
+    .platform-nav ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .platform-nav li {
+      margin-bottom: 0.35rem;
+    }
+
+    .platform-nav a {
+      display: block;
+      padding: 0.25rem 0.35rem;
+      border-radius: 0.55rem;
+      color: var(--muted);
+      transition: all 0.14s ease-out;
+    }
+
+    .platform-nav a:hover {
+      color: #f9fafb;
+      background: rgba(31, 41, 55, 0.85);
+    }
+
+    .platform-content article {
+      margin-bottom: 1.35rem;
+    }
+
+    .platform-content h3 {
+      margin: 0 0 0.3rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f9fafb;
+    }
+
+    .platform-content p {
+      margin: 0.35rem 0 0.35rem;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .platform-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .platform-tag span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #f97316;
+    }
+
+    /* Works cited */
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .works-card {
+      background: rgba(15, 23, 42, 0.94);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 1.1rem 1.1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .works-card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .works-card p {
+      margin: 0.2rem 0 0.2rem;
+    }
+
+    /* Contact / footer */
+
+    .contact-card {
+      background: radial-gradient(circle at top left, rgba(248, 113, 22, 0.28), transparent 60%),
+        linear-gradient(145deg, #020617, #020617);
+      padding: 1.6rem 1.4rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .contact-card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1.15rem;
+    }
+
+    .contact-card p {
+      margin: 0.35rem 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .contact-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .contact-meta strong {
+      color: #e5e7eb;
+    }
+
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto 1.5rem;
+      padding: 0 1.25rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      padding-top: 1rem;
+    }
+
+    .to-top {
+      font-size: 0.75rem;
+      color: #f97316;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 2.6rem 1.6rem;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .grid-two {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .platform-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .platform-nav {
+        position: static;
+        order: -1;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        margin-left: 0;
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      main {
+        padding-top: 5.25rem;
+      }
+
+      .hero {
+        margin-top: 0.5rem;
+      }
+
+      .hero-points {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 2.2rem 1.35rem;
+      }
+
+      .platform-nav {
+        padding: 0.9rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <header class="navbar" role="banner">
-        <a href="index.html" class="brand" aria-label="The Phoenix Coalition home">
-            <span class="logo" aria-hidden="true">TR</span>
-            <span class="site-title">The Phoenix Coalition</span>
-        </a>
+  <!-- Sticky site header -->
+  <header class="site-header" id="top">
+    <div class="nav-inner">
+      <div style="display:flex;align-items:center;gap:0.65rem;">
+        <div class="logo-mark" aria-hidden="true">
+          <span>🔥</span>
+        </div>
+        <div class="logo-text">
+          <span>The Phoenix Coalition</span>
+          <span>Charcoal &amp; Ember. Order &amp; Liberty.</span>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#party">Party &amp; Candidates</a>
+        <a href="#platform">Platform</a>
+        <a href="#hunger-games">Hunger Games</a>
+        <a href="#works-cited">Works Cited</a>
+        <a href="#contact" class="nav-cta">Support the Coalition</a>
+      </nav>
+    </div>
+  </header>
 
-        <!-- CSS-only toggle: hidden checkbox + label. Keeps functionality without JS. -->
-        <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-label="Toggle navigation" />
-        <label for="nav-toggle" class="nav-toggle" aria-hidden="false">☰</label>
+  <main>
+    <!-- Hero / Home -->
+    <section id="home" class="hero" aria-label="Phoenix Coalition overview">
+      <div class="hero-main">
+        <div class="hero-kicker">
+          <span></span>
+          Rebuilding after the war — with discipline, justice, and purpose
+        </div>
+        <h1 class="hero-title">
+          Rise with <span>The Phoenix Coalition</span>
+        </h1>
+        <p class="hero-subtitle">
+          The Phoenix Coalition believes that lasting freedom comes not from constant upheaval,
+          but from rebuilding with <strong>discipline, fairness, and purpose</strong>.  
+          We refuse to choose between disorder and complacency — we rise from the ashes of past failures
+          to forge a new path forward.
+        </p>
+        <div class="hero-actions">
+          <a href="#platform" class="primary">
+            <span class="icon">📜</span>
+            Read our full platform
+          </a>
+          <a href="#party" class="secondary">
+            <span class="icon">👥</span>
+            Meet our candidates &amp; team
+          </a>
+        </div>
+        <div class="hero-points">
+          <div class="hero-pill">
+            <span class="dot"></span>
+            Law, Justice, and Order — the three stars of our symbol
+          </div>
+          <div class="hero-pill">
+            <span class="dot"></span>
+            Evidence-based criminal justice &amp; re-entry
+          </div>
+          <div class="hero-pill">
+            <span class="dot"></span>
+            Universal, disciplined healthcare access
+          </div>
+          <div class="hero-pill">
+            <span class="dot"></span>
+            National curriculum &amp; teacher corps
+          </div>
+          <div class="hero-pill">
+            <span class="dot"></span>
+            Strategic foreign policy, not endless wars
+          </div>
+          <div class="hero-pill">
+            <span class="dot"></span>
+            Strategic sustainability &amp; energy security
+          </div>
+        </div>
+      </div>
 
-        <nav id="main-navigation" class="nav-links" role="navigation" aria-label="Main navigation">
-            <a href="#preamble">Preamble</a>
-            <!-- CSS-only dropdown: shows on hover/focus on desktop, opens inside mobile menu when visible -->
-            <div class="dropdown" tabindex="0">
-                <a href="#platform" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Policy Planks</a>
-                <div class="dropdown-menu" role="menu" aria-label="Policy Planks">
-                    <a href="#economy" role="menuitem">Economy</a>
-                    <a href="#foreign_policy" role="menuitem">Foreign Policy</a>
-                    <a href="#immigration" role="menuitem">Immigration</a>
-                    <a href="#criminal_justice" role="menuitem">Criminal Justice Reform</a>
-                    <a href="#healthcare_drug" role="menuitem">Healthcare &amp; Pharmaceuticals</a>
-                    <a href="#abortion" role="menuitem">Abortion</a>
-                    <a href="#second_amendment" role="menuitem">2nd Amendment</a>
-                    <a href="#education" role="menuitem">Education</a>
-                    <a href="#Environment" role="menuitem">Environment</a>
-                    <a href="#fictional_issue" role="menuitem">Fictional Issue</a>
-                </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-orbit">
+          <div class="hero-core">
+            <div class="hero-core-inner"></div>
+            <div class="hero-core-label">
+              Phoenix<br />Coalition
             </div>
-            <a href="about.html">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+          </div>
+          <div class="hero-ring-label top">
+            <strong>Stability &amp; Discipline</strong><br />
+            Charcoal base for a rebuilt nation.
+          </div>
+          <div class="hero-ring-label left">
+            <strong>Resilience &amp; Renewal</strong><br />
+            Ember red — rising from the ashes.
+          </div>
+          <div class="hero-ring-label right">
+            <strong>Law, Justice, Order</strong><br />
+            The three guiding stars of our symbol.
+          </div>
+          <div class="hero-tag">
+            Designed for a post-war Panem inspired by
+            <em>The Hunger Games</em> universe.
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <main>
-        <h1 class="title">The Phoenix Coalition</h1>
+    <!-- Party & Candidates -->
+    <section id="party" aria-label="Party information and candidates">
+      <div class="section-header">
+        <span class="pill-label">Tab 1 · Party Identity &amp; Roles</span>
+        <h2 class="section-title">Party &amp; Candidates</h2>
+        <p class="section-kicker">
+          The Phoenix Coalition represents a united post-war nation, combining the discipline of
+          District 13 with the resilience and freedom-seeking spirit of District 12.
+        </p>
+      </div>
 
-        <!-- PREAMBLE -->
-        <section class="section">
-            <div id="preamble" class="container">
-                <h2>Preamble of the Party</h2>
-                <p>
-                    Welcome to The Phoenix Coalition. Our mission is to build a better future through innovative
-                    policies and governance. The Phoenix Coalition believes that lasting freedom comes not from constant
-                    upheaval, but from rebuilding with discipline, fairness, and purpose.
-                </p>
-                <p>
-                    After prolonged polarization, economic inequality, and loss of trust in leadership, we refuse to
-                    choose between disorder and complacency. Instead, we rise from the ashes of past failures to forge a
-                    new path forward. We will lead with strength, enforcing law with consistency, protecting the
-                    economy, and respecting every citizen's right to live freely in their personal life.
-                </p>
-                <p>
-                    We believe in a government that is firm yet fair, one that upholds the rule of law while ensuring
-                    justice and opportunity for all while staying out of personal choices. The role of the government is
-                    to keep order, ensure opportunity, and defend liberty; not to moralize or divide.
-                </p>
-                <p>
-                    We will fight corruption wherever it lives, whether in government offices or boardrooms. We will
-                    rebuild trust in our institutions, restore dignity to work, and make sure that safety and stability
-                    are rights, not privileges.
-                </p>
+      <div class="grid-two">
+        <!-- Party identity -->
+        <article class="card">
+          <h3>Party Name, Colors, &amp; Symbol</h3>
+          <p><strong>Party Name:</strong> The Phoenix Coalition (representing the rebuilding country after the war).</p>
+          <p><strong>Core Colors:</strong> Charcoal (Stability) and Ember Red (Resilience).</p>
+          <div class="swatches" aria-label="Party color swatches">
+            <div class="swatch">
+              <div class="swatch-dot charcoal"></div>
+              <div>
+                <strong>Charcoal</strong><br />
+                <span>Stability &amp; structure</span>
+              </div>
             </div>
-
-            <hr id="platform" />
-
-            <div id="platform" class="container">
-
-                <!-- ECONOMY -->
-                <article id="economy" class="plank">
-                    <h2>The Economy</h2>
-                    <p>
-                        The United States has grappled with chronic economic instability characterized by inflationary
-                        pressures, an unequal distribution of wealth, and unsustainable debt of the federal government.
-                        Economic turbulence has deepened the divide between owners of capital and waged workers, making
-                        business and worker certainties a thing of the past. Real GDP growth in the United States slowed
-                        to 2.5 percent in 2023, according to estimates from the U.S. Bureau of Economic Analysis, while
-                        inflation stayed above target levels, eroding the purchasing power of millions of households
-                        (Bureau of Economic Analysis). Meanwhile, public debt has climbed beyond $34 trillion, leading
-                        to potential long-term risks to national solvency and economic sovereignty (U.S. Department of
-                        the Treasury). The economy's current structure rewards speculation over production and
-                        short-term profit over sustainable growth. Economic disorder has weakened the very foundations
-                        of national stability. When markets are allowed to run amok and there's no coherent government
-                        policy, inequality deepens and social trust erodes. According to the Federal Reserve, 64 percent
-                        of Americans live paycheck to paycheck, while the top 10 percent of earners now hold nearly 70
-                        percent of household wealth (Board of Governors of the Federal Reserve System). Such disparity
-                        undermines economic mobility and public confidence in capitalism itself. Also, persistent
-                        inflation and budgetary irresponsibility weaken national defense and infrastructure, forcing
-                        dependence on foreign debt holders. A strong economy is not merely a matter of market
-                        performance but rather one of resilience, fairness, and accountability. The Phoenix Coalition
-                        aims to ensure that a disciplined economy forms the bedrock of free society. It would require
-                        that economic power be exercised with the same precision as political power: openly,
-                        effectively, and with accountability. The Coalition will work toward a mixed-market system in
-                        which private enterprise can flourish under fair regulation, while public institutions play a
-                        stabilizing role, never as competitors. The party is opposed to untrammeled corporate
-                        concentration and irresponsible government spending alike, seeing either one as threatening
-                        national independence. Prosperity must come from productivity and ingenuity, not manipulation.
-                        Economic growth should reward work, foster self-reliance, and reinforce long-term national
-                        well-being. The Phoenix Coalition stands for fiscal responsibility by balancing budgets,
-                        targeted taxation, and responsible investment. Corporate tax loopholes that reward offshore
-                        profit-shifting will be closed; small and mid-sized businesses are incentivized through domestic
-                        production and apprenticeship programs. According to the Economic Policy Institute, investments
-                        in technical training yield higher wage growth and productivity over time compared with broad
-                        tax cuts (Economic Policy Institute). The Coalition will reinforce antitrust enforcement to
-                        ensure proper competition in key industries: technology, agriculture, and energy. Federal public
-                        spending will focus on modernizing infrastructure, developing renewable energy, and providing
-                        national supply-chain security. The party attaches federal investment directly to measurable
-                        outcomes so that it ensures accountability for every dollar spent. The Coalition also supports
-                        monetary stability through coordination between fiscal policy and the Federal Reserve. Excessive
-                        stimulus and speculative credit expansion will be avoided in favor of sustainable interest rate
-                        management and prudent lending standards. The Coalition maintains that economic freedom is
-                        preserved not through deregulation but through balance. Markets must serve the public good, not
-                        dominate it. The Phoenix Coalition believes in an economy that rewards discipline and modesty,
-                        cultivation instead of spectacle. Financial strength is a matter of national security and moral
-                        obligation. With balanced budgets, open markets, and productive investment, the Coalition
-                        affirms that stability is not the enemy of prosperity but its foundation.
-                    </p>
-                </article>
-
-                <!-- FOREIGN POLICY -->
-                <article id="foreign_policy" class="plank">
-                    <h2>Foreign Policy</h2>
-                    <p>
-                        The United States has long stood as a dominant global power, shaping international politics
-                        through economic, diplomatic, and military influence. This position has yielded significant
-                        benefits in global trade, security, and alliances. However, it has also fostered instability
-                        through excessive intervention and the misuse of military strength. Throughout history, the
-                        United States has often acted as a self-appointed global arbiter, engaging in conflicts that lie
-                        beyond its direct interests. Such actions expand both alliances and hostilities, entangling the
-                        nation in disputes that drain resources and credibility. The Phoenix Coalition strongly believes
-                        that American foreign policy must shift from reactive dominance to measured strategy. Foreign
-                        policy defines the stability and security of the nation. When military and economic resources
-                        are overextended, domestic priorities suffer. The Coalition recognizes that unchecked global
-                        involvement weakens the very foundation it aims to protect. According to the Congressional
-                        Research Service (2023), the United States has engaged militarily in over 90 foreign operations
-                        since 1945, often without achieving lasting peace or strategic gain (Congressional Research
-                        Service). The Iraq War of 2003 exemplifies this failure: launched on unfounded claims of weapons
-                        of mass destruction, the intervention cost over $1.9 trillion and claimed hundreds of thousands
-                        of lives, while diminishing American credibility among allies (Crawford). Overextension
-                        transforms power into vulnerability. The Coalition’s doctrine will ensure that the United States
-                        acts with discipline abroad to maintain strength at home. The Phoenix Coalition will uphold a
-                        foreign policy grounded in rationality, restraint, and precision. Military power is essential,
-                        but it must be wielded with calculation, not emotion. The Coalition rejects impulsive
-                        interventions and advocates for decisions based on verified intelligence, transparent
-                        objectives, and defined outcomes. Strategic patience is not weakness; it is the highest form of
-                        strength. The Coalition supports maintaining alliances through diplomacy and mutual interest
-                        while avoiding dependency or entanglement. Foreign engagement must serve national security and
-                        economic stability, not ideology. The Phoenix Coalition will establish a framework of balanced
-                        global engagement. Military deployment will require clear objectives, limited scope, and
-                        periodic review to prevent prolonged conflicts. National resources will be allocated
-                        proportionally between defense, domestic infrastructure, and research, ensuring no single sector
-                        undermines another. The Coalition will invest in cyber defense, intelligence coordination, and
-                        diplomatic channels that prioritize preemptive stability over reactionary warfare. The Coalition
-                        will institutionalize decision-making, evaluating all foreign interventions thoroughly before
-                        deployment. We will operate on verified intelligence and cost-benefit analysis, ensuring that no
-                        decision is driven by political expediency or public emotion. The Coalition affirms can only be
-                        achieved through cooperation, intelligence sharing, and targeted precision; rejecting all broad,
-                        indefinite conflicts. The Coalition will hold domestic equilibrium as the foundation of
-                        international strength. A nation fragmented at home cannot command respect abroad. Investments
-                        in education, technology, and infrastructure will enhance the credibility of American leadership
-                        by example rather than force. The Coalition rejects the illusion that constant intervention
-                        equals global influence. True power is measured by stability, endurance, and the respect of
-                        nations who see the United States as a model of order.
-                    </p>
-                </article>
-
-                <!-- IMMIGRATION -->
-                <article id="immigration" class="plank">
-                    <h2>Immigration</h2>
-                    <p>
-                        The Phoenix Coalition views immigration as both a national strength and a structural
-                        responsibility. A stable nation must manage its borders with discipline and its values with
-                        consistency. The Coalition rejects the false binary between open borders and closed doors. It
-                        recognizes that immigration, when lawful and regulated, strengthens the economy, diversifies
-                        innovation, and reinforces our national character of perseverance and enterprise. Yet it also
-                        maintains that uncontrolled or inconsistent immigration policy erodes public trust, weakens
-                        labor standards, and undermines the rule of law. The Coalition holds that the rule of law is the
-                        foundation of fairness. A government that enforces laws selectively encourages both disorder and
-                        resentment. Therefore, the coalition supports immigration systems that are transparent,
-                        merit-based, and humane. Enforcement must be firm yet efficient, ensuring that those who enter
-                        do so legally and that violations of immigration law are swiftly addressed through structured,
-                        due-process mechanisms. However, enforcement must also be humane and fair, rejecting cruelty and
-                        discrimination as tools of deterrence. The Coalition supports the modernization of our archaic,
-                        overwhelmed immigration infrastructure. Such upgrades include digital visa tracking, updated
-                        employment verification systems, and increased staffing for immigration courts to reduce
-                        backlogs. It also supports a streamlined legal pathway for workers and families who contribute
-                        to the economy, satisfying critical labor shortages in agriculture, technology, and healthcare.
-                        Studies by the Pew Research Center and the Migration Policy Institute have shown that legal
-                        immigrants contribute billions in tax revenue and start businesses at higher rates than
-                        native-born citizens (Pew Research Center; Migration Policy Institute). For these reasons,
-                        immigration policy must reward contribution and compliance rather than perpetuate inefficiency
-                        or fear.
-                    </p>
-                </article>
-
-                <!-- CRIMINAL JUSTICE -->
-                <article id="criminal_justice" class="plank">
-                    <h2>Criminal Justice Reform</h2>
-                    <p>
-                        The current criminal justice system in the United States is a failing institution that delivers
-                        neither safety to citizens nor fairness to its subjects. Two decades into reform, our nation
-                        still imprisons more than 2.2 million people, a number inflated by the nearly 10 million
-                        admissions processed through county jails every year (Carson; Zeng and Minton). Violence has
-                        been in decline since the 1990s, but the Bureau of Justice Statistics estimates that almost
-                        two-thirds of released prisoners are rearrested within three years. This is evidence of a system
-                        that punishes efficiently yet rehabilitates poorly (Alper and Durose). The imbalance shows that
-                        the pursuit of justice has been supplanted by the machinery of bureaucracy, vast in scale and
-                        limited in effectiveness. All elements of national stability suffer when a justice system goes
-                        awry. Where crime is endemic and enforcement lacks credibility, citizens lose faith in the
-                        institutions meant to keep them safe. Researchers estimate that about 40 percent of the
-                        incarcerated population is behind bars without a clear justification from a public safety
-                        standpoint, costing taxpayers billions without demonstrable evidence of deterrence (The
-                        Sentencing Project). The fragmented and slow reporting of national crime data, identified by the
-                        Council on Criminal Justice as a key barrier to sound policymaking, prevents timely and targeted
-                        responses (Council on Criminal Justice). A rudderless system diminishes both safety and liberty,
-                        undermining civic trust at its foundation. The legitimacy of the rule of law depends not on the
-                        fervor with which it punishes but on its precision. The Phoenix Coalition believes liberty
-                        requires order and order requires accountability. Justice should be predictable, quantifiable,
-                        and transparent, strict in defending peace yet restrained in intrusion into private life. The
-                        Phoenix Coalition rejects, as dangerous to freedom, both leniency that enables disorder and
-                        excess that erodes freedom. The purpose of law is not vengeance; it is equilibrium. A society
-                        cannot thrive when it tolerates lawlessness or punishes its own people as an industry. The party
-                        supports firm enforcement guided by data, fairness, and public oversight, ensuring that
-                        discipline strengthens liberty rather than restricts it. The Phoenix Coalition advocates for a
-                        system based on truth, proportionality, and effectiveness. The cornerstone will be reliable data
-                        of national crime and sentencing through an unprecedented digital transparency effort that
-                        thoroughly tracks sentencing trends, recidivism rates, and enforcement outcomes. Evidence-based
-                        policing and judicial policy replace reactive enforcement, focusing resources on violent and
-                        repeat offenders rather than low-level, nonviolent cases. Targeted intervention has always been
-                        proven to cut violence far more effectively than mass incarceration (National Institute of
-                        Justice). Sentencing reform will be based on proportionality and purpose, with mandatory
-                        minimums and outdated "three-strikes" laws revised to reflect actual public safety outcomes.
-                        With 17 percent of state prisoners incarcerated for nonviolent drug offenses, the need for
-                        judicial discretion and rehabilitative alternatives is clear (Carson). Evidence-based reentry
-                        programs focused on employment, housing stability, and behavioral accountability will be
-                        expanded. Research from the National Institute of Justice shows that such programs can reduce
-                        recidivism by up to 20 percent (National Institute of Justice). Finally, transparency will be
-                        institutionalized through standardized public reporting of arrest, conviction, and sentencing
-                        data. Open access to performance metrics at every stage will ensure oversight, build public
-                        confidence, and prevent abuses of power.
-                    </p>
-                </article>
-
-                <!-- HEALTHCARE & DRUGS -->
-                <article id="healthcare_drug" class="plank">
-                    <h2>Healthcare and Pharmaceutical Regulation</h2>
-                    <p>
-                        For too long, healthcare in the United States has been treated as a commodity rather than a
-                        collective necessity. The Phoenix Coalition rejects this notion. Health is not a product to be
-                        bought or sold; it is a tool of national survival. A nation’s longevity and strength depend on
-                        the physical and mental endurance of its people. According to the Centers for Disease Control
-                        and Prevention (CDC), expanding access to healthcare saves more than 212,000 lives in the United
-                        States every year. The average American life expectancy stands at approximately 77 years,
-                        compared with 68 years in countries with minimal healthcare infrastructure, such as India
-                        (Murphy et al.). These differences illustrate a fundamental truth: access to medical care
-                        determines whether a population thrives or decays. A healthy population is a productive
-                        population. The Coalition views healthcare not as a matter of convenience, but as a foundation
-                        of national security and efficiency. Research from the Kaiser Family Foundation (2024) estimates
-                        that preventable illness costs the U.S. economy more than $260 billion annually in lost
-                        productivity (Kaiser Family Foundation). Illness undermines labor strength, weakens morale, and
-                        erodes the resilience of the workforce. Therefore, ensuring universal access to medical care is
-                        not merely a moral imperative — it is a strategic necessity. The right to health carries with it
-                        a civic duty to maintain that health for the collective good. The Phoenix Coalition guarantees
-                        universal medical care as a right of citizenship and a requirement of service. Every citizen,
-                        regardless of class or occupation, shall receive the treatment necessary to preserve their
-                        ability to perform their societal function. In return, all citizens must comply with regular
-                        health evaluations and contribute anonymized data to federal health systems for research and
-                        monitoring (Centers for Disease Control and Prevention). Refusal to participate constitutes
-                        refusal to serve. Health resources are allocated by strategic priority: individuals essential to
-                        defense, production, or research receive priority in treatment and recovery. Medicine is
-                        distributed according to necessity, not desire. Rehabilitation is reserved for those who
-                        contribute to the collective; idleness does not merit restoration. The Coalition envisions a
-                        healthcare system based on universal access, scientific regulation, and moral discipline. All
-                        pharmaceuticals and medical substances shall be subject to the oversight of the Food and Drug
-                        Administration (FDA). Each drug must pass through the FDA’s 12-step approval process, a
-                        safeguard established by the 1938 Federal Food, Drug, and Cosmetic Act to prevent the
-                        circulation of unsafe products (U.S. Food and Drug Administration). The unregulated creation or
-                        distribution of drugs constitutes a direct act against the nation’s welfare. Medication exists
-                        to heal, not to gratify. Pharmaceutical production will occur exclusively under federal
-                        supervision. Government laboratories will control dosage, availability, and purpose of all
-                        medical products. This regulation will eliminate the epidemic of overdose that claims more than
-                        110,000 American lives annually, according to the National Institute on Drug Abuse (National
-                        Institute on Drug Abuse). Recreational drug use is prohibited; chemical dependency weakens
-                        individual discipline and collective strength. The 6.8 million Americans who currently use
-                        marijuana recreationally represent the erosion of civic resilience. Scientific research links
-                        such use to delayed neurological development and dependency among adolescents (Substance Abuse
-                        and Mental Health Services Administration). The Coalition stands unequivocally against these
-                        indulgences. Scientific advancement remains a national priority. As of June 2025, the United
-                        States hosts roughly 159,000 registered clinical trials, with new drug development requiring an
-                        average of 10 to 12 years and $2.6 billion to complete. Only 12 percent of candidates achieve
-                        approval (U.S. Food and Drug Administration). These figures justify the Coalition’s centralized
-                        model of research oversight, ensuring that time, funding, and innovation are directed toward
-                        medicine that enhances survival and operational strength; trauma care, radiation treatment, and
-                        resistance medicine. Experimental treatments must be sanctioned through federal review to ensure
-                        safety and alignment with national objectives. The Coalition rejects medical decadence in all
-                        forms. Recreational pharmaceuticals and pain-numbing indulgences divert resources from genuine
-                        healing. Globally, 15.8 million aesthetic surgeries were performed in 2023, including 1.6
-                        million in the United States, often with medical complications. In the same year, 14.2 million
-                        Americans misused prescription psychotherapeutic drugs, and 8.5 million abused pain relievers
-                        (Substance Abuse and Mental Health Services Administration; International Society of Aesthetic
-                        Plastic Surgery). Such misuse represents moral and civic decay. The Coalition affirms that
-                        medicine exists to restore function, not to gratify vanity. Within this system, the body serves
-                        the mission, medicine serves the people, and the people serve the nation. No life will be wasted
-                        to negligence, indulgence, or inequity. Health is not a privilege; it is the instrument by which
-                        the Coalition ensures survival, progress, and the unbreakable vitality of the United States.
-                    </p>
-                </article>
-
-                <!-- ABORTION -->
-                <article id="abortion" class="plank">
-                    <h2>Abortion</h2>
-                    <p>
-                        The Phoenix Coalition believes that the issue abortion is one of personal autonomy,
-                        responsibility, and moral order. While the Coalition recognizes the importance of safeguarding
-                        individual rights and personal choices, it also believes that laws should provide clear,
-                        predictable boundaries that protect the health of both individuals and society. The Coalition’s
-                        stance on abortion is grounded in the principle that personal freedom must be protected, but
-                        personal responsibility should also be acknowledged. The party supports a legal right to
-                        abortion within the framework of a regulated, ethical, and transparent system. This ensures that
-                        women have access to safe, legal healthcare options while also addressing the complex moral,
-                        social, and public health aspects of the issue. Abortion, the Coalition believes, should be
-                        available to those who need it, but it should not be viewed as a carefree or unrestricted
-                        decision. There must be respect for both the autonomy of the individual and the moral values of
-                        society (Guttmacher Institute; Kortsmit et al.). The Coalition supports the right to choose up
-                        to a reasonable point in pregnancy, acknowledging that early-stage abortions are a necessary
-                        part of protecting individual autonomy and health. However, the Coalition also believes that as
-                        a pregnancy progresses, the state has a legitimate interest in regulating the procedure more
-                        strictly to balance the health and safety of the mother with the ethical considerations
-                        surrounding the potential life of the fetus (Kortsmit et al.). The second trimester, in
-                        particular, requires careful consideration of both public health and individual liberty. The
-                        Phoenix Coalition opposes unrestricted abortion practices of the past, which allowed for
-                        late-term procedures to be performed without stringent medical oversight or clear necessity.
-                        However, the Coalition also opposes total bans on abortion, recognizing that such laws would not
-                        only harm women’s rights but also force the nation into a regressive, authoritarian stance that
-                        undermines both personal freedom and public health (Guttmacher Institute). To ensure balanced
-                        and effective regulation, the Coalition advocates for comprehensive sex education and
-                        contraceptive access as primary tools in preventing pregnancies, increased support for maternal
-                        health including prenatal care and mental health services, a national health policy that allows
-                        for a reasonable waiting period and counseling for those seeking an abortion, and ensuring safe
-                        and legal procedures for those in need (Centers for Disease Control and Prevention).
-                    </p>
-                </article>
-
-                <!-- SECOND AMENDMENT -->
-                <article id="second_amendment" class="plank">
-                    <h2>Second Amendment Rights</h2>
-                    <p>
-                        The Second Amendment of the United States Constitution was established to ensure citizens’
-                        protection against tyranny and to safeguard self-defense. Yet in the modern era, this right has
-                        been distorted into a source of violence, fear, and disunity. Unrestricted firearm access has
-                        fostered mass shootings, civil unrest, and mistrust in authority. According to the Gun Violence
-                        Archive (2024), an average of 327 people are shot every day in the United States, and
-                        approximately 117 die from gun-related injuries (Gun Violence Archive). The right that once
-                        symbolized freedom now fuels chaos. The Phoenix Coalition contends that to preserve national
-                        stability, the Second Amendment must be reinterpreted not as an absolute personal liberty but as
-                        a regulated civic responsibility bound to the collective security of the state. A nation that
-                        arms itself without restraint cannot sustain peace. The proliferation of firearms has made
-                        safety a privilege rather than a guarantee, weakening the trust between citizens and their
-                        institutions. Studies from the Pew Research Center indicate that over 70 percent of Americans,
-                        including many gun owners, support measures such as universal background checks and safe-storage
-                        laws (Pew Research Center). The Phoenix Coalition believes firearms ownership should be treated
-                        like driving a car or practicing a trade: a lawful liberty subject to training, licensing, and
-                        oversight. The party supports constitutional gun ownership for responsible adults while
-                        demanding strict measures to keep weapons away from those who pose a clear danger. The
-                        Coalition’s Responsible Firearm Ownership framework includes universal background checks on all
-                        gun sales, licensing and safety training requirements, limits on high-capacity weapons designed
-                        for rapid mass killing, and extreme-risk protection orders that temporarily remove firearms from
-                        individuals who present a documented threat to themselves or others (Davis and Packard; Pew
-                        Research Center). The Coalition also supports investments in community violence-interruption
-                        programs and data-driven policing strategies in neighborhoods most affected by gun violence
-                        (National Institute of Justice). Under this disciplined system, the right to bear arms remains
-                        protected, but the culture of negligence and impunity surrounding firearms is brought to an end.
-                    </p>
-                </article>
-
-                <!-- EDUCATION -->
-                <article id="education" class="plank">
-                    <h2>Education</h2>
-                    <p>
-                        The United States emerges from war with an education system that is fractured from decades of
-                        inaccessibility, deprivation, and neglect. Under the Capitol, learning was not a right but a
-                        privilege granted selectively. It was weaponized to maintain control and was stripped from many
-                        districts entirely; approximately 21% of U.S. adults are unable to complete literacy tasks at a
-                        level necessary for the modern workforce, and an estimated 130 million adults have low literacy
-                        skills (Schmidt; National Center for Education Statistics). The result of inconsistent education
-                        is a nation whose citizens lack a solid academic foundation, a vocational skill set, and an
-                        understanding of civics. This divided education system has led to a divided people, and division
-                        cannot be afforded in the post-war nation. The Coalition believes a stable nation cannot exist
-                        without an educated society. National resilience is built on the backbone of literacy, critical
-                        thinking, and practical competence. Without these skills, misinformation spreads easily and
-                        productivity weakens, which slows our recovery from the war. The Phoenix Coalition understands
-                        that the same forces that enabled the dominant to dominate the nation, dependency and a lack of
-                        education, threaten long-term stability. Once the curriculum is predictable, accessible, and
-                        measurable, liberty and order will be strengthened. A fractured system creates weakness and
-                        instability, while a structured system will allow the nation not just to recover but to advance.
-                        The Phoenix Coalition asserts that education is a collective obligation: citizens have the duty
-                        to learn, while the nation has the responsibility to teach our generation. Our party proposes a
-                        national curriculum reform, which would have a unified national standard of education that must
-                        be taught nationwide, with emphasis on factual literacy, scientific knowledge, and technical
-                        experience rather than arbitrary skill sets. These standards will be essential to national
-                        reconstruction. In the U.S., schools with strong career-readiness programs report graduation
-                        rates above 90%. This ensures that training is completed (Association for Career and Technical
-                        Education). To achieve this, our party will establish a National Teacher Corps to train
-                        instructors and professors to consistent standards and deploy them in underserved areas. A
-                        nation’s strength depends on its ability to prepare its own citizens for work and civic
-                        participation. Adults with low literacy are far less likely to secure stable, living wage
-                        employment (Organisation for Economic Co-operation and Development). To restore competence and
-                        eliminate educational inequity nationwide, the Phoenix Coalition will repurpose existing
-                        facilities into nationwide educational facilities. These facilities will offer apprenticeships,
-                        technical certifications, and community service programs. A centralized monitoring system will
-                        track literacy rates and workplace readiness and ensure that resources are distributed evenly
-                        throughout (National Center for Education Statistics). Although education is a right, citizens
-                        are expected to participate in and complete this program, and the state will guarantee access to
-                        learning materials and meaningful education. The Phoenix Coalition stands against the inequity
-                        of knowledge, both the government’s weaponization of it and its neglect of those who desperately
-                        need it. The Coalition will induce a populace that is both informed about current issues and
-                        able to act on that knowledge practically. We will ensure that citizens can meaningfully
-                        contribute to our nation, think for themselves, and protect their freedom. Reform in education
-                        is what will turn our divided, struggling society into a unified, advancing one.
-                    </p>
-                </article>
-
-                <!-- ENVIRONMENT -->
-                <article id="Environment" class="plank">
-                    <h2>The Environment</h2>
-                    <p>
-                        The United States faces increasing environmental threats from rising global temperatures,
-                        limited resources, and increasing natural disasters. According to NOAA, 2023 experienced 28
-                        billion-dollar weather events—the most on record (National Oceanic and Atmospheric
-                        Administration). Meanwhile, carbon emissions keep increasing, and the scarcity of water
-                        endangers agricultural and industrial output. These situations become more serious with
-                        inconsistent policy and fragmented enforcement where environmental protection is a matter of
-                        political cycles and not part of a national strategy. Current practices are uncoordinated, data
-                        is imprecise, and there is no long-term focus. Environmental instability threatens not only
-                        ecosystems but also economic growth, national security, and public health. According to the
-                        World Bank, climate-related disasters cost the United States $165 billion in 2022 alone (World
-                        Bank). Such losses burden taxpayers, stretch emergency systems beyond their limits, and reduce
-                        agricultural yields. In addition, pollution and unsafe air quality disproportionately affect
-                        working-class and rural communities, exacerbating the very inequality the Coalition strives to
-                        eradicate. A disordered environment yields disordered governance. If nothing is done at the
-                        structural level, the country's ability for energy independence and food security will degrade,
-                        thus undermining sovereignty and social stability. For the Phoenix Coalition, environmental
-                        policy is a matter of national discipline, not ideological debate. The environment is not a
-                        moral battleground but a logistical responsibility. The Coalition disavows either unrestricted
-                        exploitation of natural resources or poorly coordinated regulatory overreach. It supports a
-                        framework of strategic sustainability in which protecting the environment and achieving
-                        industrial development are complementary goals. The management of resources should be informed
-                        by science, accountability, and technological innovation—not partisan inclination. A strong
-                        environment is, declares the Coalition, the precondition of a strong economy. The Coalition
-                        supports a national transition to energy that is reliable, independent, and efficient. Renewable
-                        development will be initiated using federal incentives that are measurable with benchmarks for
-                        actual carbon reductions. According to the Department of Energy, already 22 percent of the
-                        nation's electricity generation comes from renewable sources (U.S. Energy Information
-                        Administration). The Coalition will seek to safely double that amount by 2035 without
-                        compromising grid stability. Investment in nuclear energy, advanced battery storage, and carbon
-                        capture technologies will ensure sustainable energy without economic disruption. To protect
-                        natural resources, the Coalition advocates for modernized water infrastructure and stricter
-                        enforcement of pollution controls, particularly in manufacturing and agriculture. Federal
-                        agencies will coordinate under a single Environmental Data Command to monitor emissions,
-                        deforestation, and resource extraction in real time. This precision-based model replaces
-                        reactive policy with proactive management. The Coalition will also tie corporate sustainability
-                        standards to tax incentives, rewarding measurable environmental responsibility rather than
-                        symbolic compliance. The Phoenix Coalition believes that environmental order is inseparable from
-                        economic and social order. Preservation without structure leads to inefficiency, while progress
-                        without restraint leads to collapse. Guided by science-based regulation, innovation, and
-                        long-term planning, the Coalition envisions a nation that treats environmental stewardship as an
-                        act of governance, not charity. Sustainability isn't a slogan—it’s a system, one built to
-                        endure.
-                    </p>
-                </article>
-
-                <!-- FICTIONAL ISSUE / HUNGER GAMES -->
-                <article id="fictional_issue" class="plank">
-                    <h2>Fictional Issue: The Hunger Games</h2>
-                    <p>
-                        The Coalition strongly condemns the Hunger Games as an immoral and inefficient use of power that
-                        betrays the principles of order, justice, and liberty. The Games represent the corruption of
-                        governance, the transformation of law into spectacle and control into cruelty. A government that
-                        claims to preserve peace through ritualized violence does not enforce order; it destroys it. The
-                        Coalition holds that true stability cannot be achieved through fear. Order must arise from
-                        legitimacy, not coercion. The Games eroded both, turning citizens into participants in their own
-                        subjugation. Such institutions degrade the moral foundation of our nation and divert resources
-                        away from legitimate interests. The Coalition maintains that the preservation of social order
-                        must never come at the expense of human dignity. Crime and rebellion are symptoms of imbalance,
-                        not excuses for oppression. The Hunger Games, in their waste and barbarity, exemplify the
-                        failure of leadership that persists today (Collins).
-                    </p>
-                </article>
-
+            <div class="swatch">
+              <div class="swatch-dot ember"></div>
+              <div>
+                <strong>Ember Red</strong><br />
+                <span>Resilience &amp; renewal</span>
+              </div>
             </div>
-        </section>
-
-        <section id="contact" class="section">
-            <div class="container">
-                <h2>Contact</h2>
-                <p>Get in touch with The Phoenix Coalition:</p>
-                <ul class="contact-info">
-                    <li>Email: info@reconstructionparty.org</li>
-                    <li>Phone: (555) 123-4567</li>
-                    <li>Address: 123 Reform Street, Democracy City, DC 10001</li>
-                </ul>
+            <div class="swatch">
+              <div class="swatch-dot accent"></div>
+              <div>
+                <strong>Three Stars</strong><br />
+                <span>Law, Justice, Order</span>
+              </div>
             </div>
-        </section>
-    </main>
+          </div>
 
-    <script src="main.js"></script>
+          <div style="margin-top:1.25rem;">
+            <div class="symbol-mark">
+              <span>🕊️</span>
+            </div>
+            <div class="symbol-caption">
+              <strong>Symbol:</strong> A phoenix with three stars —  
+              representing <strong>law</strong>, <strong>justice</strong>, and <strong>order</strong> rising from the ruins of war.
+            </div>
+            <p class="tagline">
+              The Coalition’s identity is built on the idea that a nation can be rebuilt only
+              when discipline, fairness, and liberty are held together in tension — not pitted
+              against one another.
+            </p>
+          </div>
+
+          <div style="margin-top:1.3rem;">
+            <p style="font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem;">
+              <strong>Project contents for this tab:</strong>
+            </p>
+            <p style="font-size:0.8rem;color:var(--muted);margin-top:0;">
+              Party Platform Planks — Preamble; Criminal Justice Reform; Healthcare and Pharmaceutical
+              Regulation; Education; Second Amendment Rights; Foreign Policy; Immigration; Abortion; The Economy;
+              The Environment; The Hunger Games; Plank Works Cited.
+            </p>
+          </div>
+        </article>
+
+        <!-- Candidates & team roles -->
+        <article class="card">
+          <h3>Candidates &amp; Campaign Roles</h3>
+          <p class="tagline">
+            The choice of candidates reflects the ideological structure of District 12 and 13
+            combined in <em>The Hunger Games</em> universe.
+          </p>
+
+          <div class="candidate-grid">
+            <div class="card-soft">
+              <div class="candidate-role">Presidential Candidate</div>
+              <div class="candidate-name">Alma Coin — Raine</div>
+              <p>
+                Alma Coin, the president of District 13, represents disciplined, centralized
+                governance. The Coalition draws on District 13’s emphasis on order, security,
+                and strategic planning, making Coin the logical choice for President in a
+                nation rebuilding from war.
+              </p>
+            </div>
+            <div class="card-soft">
+              <div class="candidate-role">Vice Presidential Candidate</div>
+              <div class="candidate-name">Haymitch — Robby</div>
+              <p>
+                Haymitch Abernathy, originally from District 12, embodies resilience, skepticism
+                of unchecked power, and a fierce loyalty to individual freedom. His role balances
+                Coin’s authority with the lived experience and liberal spirit of District 12.
+              </p>
+            </div>
+          </div>
+
+          <p style="margin-top:1rem;">
+            The party is meant to represent the Districts after the war — combining the
+            authoritarian stability of District 13 with the hard-earned freedom and humanity
+            of District 12. This duality provides a balance between two different ideologies
+            that the party represents.
+          </p>
+
+          <div class="card-soft" style="margin-top:1rem;">
+            <div class="meta-row">
+              <span style="font-weight:600;color:#e5e7eb;">Campaign Team &amp; Roles</span>
+            </div>
+            <div class="team-grid">
+              <div>
+                <strong>Raine</strong><br />
+                <span class="role">Fictional Issue · President</span>
+              </div>
+              <div>
+                <strong>Robby</strong><br />
+                <span class="role">Healthcare &amp; Drug Policy · Vice President</span>
+              </div>
+              <div>
+                <strong>Sandhya</strong><br />
+                <span class="role">Criminal Justice Reform · Webmaster</span><br />
+                <a href="mailto:ssrimathirmala@cheshire.k12.ct.us">
+                  ssrimathirmala@cheshire.k12.ct.us
+                </a> · 203-715-2675
+              </div>
+              <div>
+                <strong>Rishi</strong><br />
+                <span class="role">Foreign Policy · Public Relations Manager</span>
+              </div>
+              <div>
+                <strong>Josh</strong><br />
+                <span class="role">Immigration · Policy Expert</span>
+              </div>
+              <div>
+                <strong>Touraj</strong><br />
+                <span class="role">Immigration · Campaign Manager</span><br />
+                <a href="mailto:trajabipour@cheshire.k12.ct.us">
+                  trajabipour@cheshire.k12.ct.us
+                </a> · 475-255-8018
+              </div>
+              <div>
+                <strong>Naman</strong><br />
+                <span class="role">Education · Press Secretary</span><br />
+                <a href="mailto:narora@cheshire.k12.ct.us">
+                  narora@cheshire.k12.ct.us
+                </a> · 203-558-7197
+              </div>
+              <div>
+                <strong>Niam</strong><br />
+                <span class="role">Second Amendment · Media Advisor</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Platform planks -->
+    <section id="platform" aria-label="Party Platform Planks">
+      <div class="section-header">
+        <span class="pill-label">Party Platform Planks</span>
+        <h2 class="section-title">Our Platform</h2>
+        <p class="section-kicker">
+          The Phoenix Coalition’s planks cover criminal justice, healthcare, education, the Second
+          Amendment, foreign policy, immigration, abortion, the economy, the environment, and
+          the legacy of the Hunger Games. Each plank is rooted in disciplined governance and
+          post-war reconstruction.
+        </p>
+      </div>
+
+      <div class="platform-layout">
+        <!-- Left: local navigation -->
+        <aside class="platform-nav" aria-label="Issue navigation">
+          <div class="platform-nav-title">Jump to a plank</div>
+          <ul>
+            <li><a href="#preamble">Preamble</a></li>
+            <li><a href="#criminal-justice">Criminal Justice Reform</a></li>
+            <li><a href="#healthcare">Healthcare &amp; Pharmaceutical Regulation</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#second-amendment">Second Amendment Rights</a></li>
+            <li><a href="#foreign-policy">Foreign Policy</a></li>
+            <li><a href="#immigration">Immigration</a></li>
+            <li><a href="#abortion">Abortion</a></li>
+            <li><a href="#economy">The Economy</a></li>
+            <li><a href="#environment">The Environment</a></li>
+          </ul>
+        </aside>
+
+        <!-- Right: content -->
+        <div class="platform-content">
+          <!-- Preamble -->
+          <article id="preamble">
+            <div class="platform-tag">
+              <span class="dot"></span>Foundational Vision
+            </div>
+            <h3>Preamble</h3>
+            <p>
+              Welcome to The Phoenix Coalition. Our mission is to build a better future through
+              innovative policies and governance. The Phoenix Coalition believes that lasting freedom
+              comes not from constant upheaval, but from rebuilding with discipline, fairness, and
+              purpose.
+            </p>
+            <p>
+              After prolonged polarization, economic inequality, and loss of trust in leadership, we
+              refuse to choose between disorder and complacency. Instead, we rise from the ashes of
+              past failures to forge a new path forward. We will lead with strength, enforcing law
+              with consistency, protecting the economy, and respecting every citizen’s right to live
+              freely in their personal life.
+            </p>
+            <p>
+              We believe in a government that is firm yet fair, one that upholds the rule of law while
+              ensuring justice and opportunity for all while staying out of personal choices. The role
+              of the government is to keep order, ensure opportunity, and defend liberty — not to
+              moralize or divide.
+            </p>
+            <p>
+              We will fight corruption wherever it lives, whether in government offices or boardrooms.
+              We will rebuild trust in our institutions, restore dignity to work, and make sure that
+              safety and stability are rights, not privileges.
+            </p>
+          </article>
+
+          <!-- Criminal Justice -->
+          <article id="criminal-justice">
+            <div class="platform-tag">
+              <span class="dot"></span>Criminal Justice Reform
+            </div>
+            <h3>Criminal Justice Reform</h3>
+            <p>
+              The current criminal justice system in the United States is a failing institution that
+              delivers neither safety to citizens nor fairness to its subjects. Two decades into reform,
+              our nation still imprisons more than 2.2 million people, a number inflated by the nearly
+              10 million admissions processed through county jails every year. Violence has been in
+              decline since the 1990s, but the Bureau of Justice Statistics estimates that almost
+              two-thirds of released prisoners are rearrested within three years. This is evidence of a
+              system that punishes efficiently yet rehabilitates poorly — a machinery of bureaucracy
+              vast in scale and limited in effectiveness.
+            </p>
+            <p>
+              All elements of national stability suffer when a justice system goes awry. Where crime is
+              endemic and enforcement lacks credibility, citizens lose faith in the institutions meant
+              to keep them safe. Researchers estimate that about 40 percent of the incarcerated
+              population is behind bars without a clear justification from a public safety standpoint,
+              costing taxpayers billions without demonstrable evidence of deterrence. The fragmented
+              and slow reporting of national crime data prevents timely and targeted responses.
+              A rudderless system diminishes both safety and liberty, undermining civic trust at its
+              foundation. The legitimacy of the rule of law depends not on the fervor with which it
+              punishes but on its precision.
+            </p>
+            <p>
+              The Phoenix Coalition believes liberty requires order and order requires accountability.
+              Justice should be predictable, quantifiable, transparent, strict in defending peace yet
+              restrained in intrusion into private life. The Phoenix Coalition rejects, as dangerous to
+              freedom, both leniency that enables disorder and excess that erodes freedom. The purpose
+              of law is not vengeance — it is equilibrium. A society cannot thrive when it tolerates
+              lawlessness or punishes its own people as an industry.
+            </p>
+            <p>
+              The party supports firm enforcement guided by data, fairness, and public oversight,
+              ensuring that discipline strengthens liberty rather than restricts it. The Phoenix
+              Coalition advocates for a system based on truth, proportionality, and effectiveness.
+              The cornerstone will be reliable national crime and sentencing data through an
+              unprecedented digital transparency effort that thoroughly tracks sentencing trends,
+              recidivism rates, and enforcement outcomes.
+            </p>
+            <p>
+              Evidence-based policing and judicial policy will replace reactive enforcement, focusing
+              resources on violent and repeat offenders rather than low-level, non-violent cases.
+              Sentencing reform will be based on proportionality and purpose, with mandatory minimums
+              and outdated “three-strikes” laws revised to reflect actual public safety outcomes. With
+              17 percent of state prisoners incarcerated for non-violent drug offenses, the need for
+              judicial discretion and rehabilitative alternatives is clear.
+            </p>
+            <p>
+              Evidence-based reentry programs focused on employment, housing stability, and behavioral
+              accountability will be expanded. Research shows that such programs can reduce recidivism
+              by up to 20 percent. Finally, transparency will be institutionalized through standardized
+              public reporting of arrest, conviction, and sentencing data. Open access to performance
+              metrics at every stage will ensure oversight, build public confidence, and prevent abuses
+              of power.
+            </p>
+          </article>
+
+          <!-- Healthcare -->
+          <article id="healthcare">
+            <div class="platform-tag">
+              <span class="dot"></span>Healthcare &amp; Pharmaceutical Regulation
+            </div>
+            <h3>Healthcare and Pharmaceutical Regulation</h3>
+            <p>
+              For too long, healthcare in the United States has been treated as a commodity rather
+              than a collective necessity. The Phoenix Coalition rejects this notion. Health is not a
+              product to be bought or sold; it is a tool of national survival. A nation’s longevity and
+              strength depend on the physical and mental endurance of its people. Expanding access to
+              healthcare saves hundreds of thousands of lives every year. The average American life
+              expectancy stands at approximately 77 years, compared with 68 years in countries with
+              minimal healthcare infrastructure — a clear illustration that access to medical care
+              determines whether a population thrives or decays.
+            </p>
+            <p>
+              A healthy population is a productive population. The Coalition views healthcare not as a
+              matter of convenience but as a foundation of national security and efficiency. Preventable
+              illness costs the U.S. economy hundreds of billions of dollars annually in lost
+              productivity, undermining labor strength, weakening morale, and eroding workforce
+              resilience. Therefore, ensuring universal access to medical care is not merely a moral
+              imperative — it is a strategic necessity. The right to health carries with it a civic duty
+              to maintain that health for the collective good.
+            </p>
+            <p>
+              The Phoenix Coalition guarantees universal medical care as a right of citizenship and a
+              requirement of service. Every citizen, regardless of class or occupation, shall receive
+              the treatment necessary to preserve their ability to perform their societal function.
+              In return, all citizens must comply with regular health evaluations and contribute
+              anonymized data to federal health systems for research and monitoring. Refusal to
+              participate constitutes refusal to serve.
+            </p>
+            <p>
+              Health resources are allocated by strategic priority: individuals essential to defense,
+              production, or research receive priority in treatment and recovery. Medicine is
+              distributed according to necessity, not desire. Rehabilitation is reserved for those who
+              contribute to the collective; idleness does not merit restoration.
+            </p>
+            <p>
+              The Coalition envisions a healthcare system based on universal access, scientific
+              regulation, and moral discipline. All pharmaceuticals and medical substances shall be
+              subject to the oversight of the Food and Drug Administration (FDA). Each drug must pass
+              through the FDA’s rigorous approval process, a safeguard established to prevent the
+              circulation of unsafe products. The unregulated creation or distribution of drugs
+              constitutes a direct act against the nation’s welfare. Medication exists to heal, not to
+              gratify.
+            </p>
+            <p>
+              Pharmaceutical production will occur exclusively under federal supervision. Government
+              laboratories will control dosage, availability, and purpose of all medical products. This
+              regulation will help eliminate the epidemic of overdose that claims more than 110,000
+              American lives annually. Recreational drug use is prohibited; chemical dependency
+              weakens individual discipline and collective strength. Millions of Americans who use
+              marijuana or other substances recreationally represent an erosion of civic resilience.
+              Scientific research links such use to delayed neurological development and dependency
+              among adolescents. The Coalition stands unequivocally against these indulgences.
+            </p>
+            <p>
+              Scientific advancement remains a national priority. New drug development can require a
+              decade or more and billions of dollars to complete, with only a fraction of candidates
+              achieving approval. These figures justify the Coalition’s centralized model of research
+              oversight, ensuring that time, funding, and innovation are directed toward medicine that
+              enhances survival and operational strength: trauma care, radiation treatment, and
+              resistance medicine.
+            </p>
+            <p>
+              Experimental treatments must be sanctioned through federal review to ensure safety and
+              alignment with national objectives. The Coalition rejects medical decadence in all forms.
+              Recreational pharmaceuticals and pain-numbing indulgences divert resources from genuine
+              healing. Globally, tens of millions of aesthetic surgeries are performed each year, often
+              with medical complications, while millions misuse prescription drugs. Such misuse
+              represents moral and civic decay. The Coalition affirms that medicine exists to restore
+              function, not to gratify vanity. Within this system, the body serves the mission,
+              medicine serves the people, and the people serve the nation.
+            </p>
+            <p>
+              No life will be wasted to negligence, indulgence, or inequity. Health is not a privilege;
+              it is the instrument by which the Coalition ensures survival, progress, and the
+              unbreakable vitality of the United States.
+            </p>
+          </article>
+
+          <!-- Education -->
+          <article id="education">
+            <div class="platform-tag">
+              <span class="dot"></span>Education
+            </div>
+            <h3>Education</h3>
+            <p>
+              The United States emerges from war with an education system fractured by decades of
+              inaccessibility, deprivation, and neglect. Under the Capitol, learning was not a right
+              but a privilege granted selectively. It was weaponized to maintain control and stripped
+              from many districts entirely. Approximately 21 percent of U.S. adults are unable to
+              complete literacy tasks at a level necessary for the modern workforce, and an estimated
+              130 million adults have low literacy skills.
+            </p>
+            <p>
+              The result of inconsistent education is a nation whose citizens lack a solid academic
+              foundation, a vocational skill set, and an understanding of civics. This divided
+              education system has led to a divided people, and division cannot be afforded in the
+              post-war nation. The Coalition believes a stable nation cannot exist without an educated
+              society. National resilience is built on the backbone of literacy, critical thinking, and
+              practical competence.
+            </p>
+            <p>
+              Without these skills, misinformation spreads easily and productivity weakens, slowing
+              our recovery from the war. The Phoenix Coalition understands that the same forces that
+              enabled the dominant to dominate the nation — dependency and a lack of education —
+              threaten long-term stability. Once the curriculum is predictable, accessible, and
+              measurable, liberty and order will be strengthened. A fractured system creates weakness
+              and instability, while a structured system will allow the nation not just to recover but
+              to advance.
+            </p>
+            <p>
+              The Phoenix Coalition asserts that education is a collective obligation: citizens have
+              the duty to learn, while the nation has the responsibility to teach. Our party proposes a
+              national curriculum reform, with a unified standard of education that must be taught
+              nationwide, emphasizing factual literacy, scientific knowledge, and technical experience
+              rather than arbitrary skill sets. These standards will be essential to national
+              reconstruction.
+            </p>
+            <p>
+              In the U.S., schools with strong career-readiness programs report graduation rates above
+              90 percent. To achieve this, our party will establish a National Teacher Corps to train
+              instructors and professors to consistent standards and deploy them in underserved areas.
+              A nation’s strength depends on its ability to prepare its own citizens for work and civic
+              participation.
+            </p>
+            <p>
+              Adults with low literacy are far less likely to secure stable, living-wage employment.
+              To restore competence and eliminate educational inequity nationwide, the Phoenix
+              Coalition will repurpose existing facilities into nationwide educational centers. These
+              facilities will offer apprenticeships, technical certifications, and community service
+              programs. A centralized monitoring system will track literacy rates and workplace
+              readiness, ensuring that resources are distributed evenly.
+            </p>
+            <p>
+              Although education is a right, citizens are expected to participate in and complete this
+              program, and the state will guarantee access to learning materials and meaningful
+              education. The Phoenix Coalition stands against the inequity of knowledge — both the
+              government’s weaponization of it and its neglect of those who desperately need it.
+            </p>
+            <p>
+              The Coalition will cultivate a populace that is both informed about current issues and
+              able to act on that knowledge practically. We will ensure that citizens can meaningfully
+              contribute to our nation, think for themselves, and protect their freedom. Reform in
+              education is what will turn our divided, struggling society into a unified, advancing
+              one.
+            </p>
+          </article>
+
+          <!-- Second Amendment -->
+          <article id="second-amendment">
+            <div class="platform-tag">
+              <span class="dot"></span>Second Amendment Rights</div>
+            <h3>Second Amendment Rights</h3>
+            <p>
+              The Second Amendment of the United States Constitution was established to ensure
+              citizens’ protection against tyranny and to safeguard self-defense. Yet in the modern
+              era, this right has been distorted into a source of violence, fear, and disunity.
+              Unrestricted firearm access has fostered mass shootings, civil unrest, and mistrust in
+              authority. Every day, hundreds of people are shot in the United States, and more than a
+              hundred die from gun-related injuries. The right that once symbolized freedom now fuels
+              chaos.
+            </p>
+            <p>
+              The Phoenix Coalition contends that to preserve national stability, the Second Amendment
+              must be reinterpreted not as an absolute personal liberty but as a regulated civic
+              responsibility bound to the collective security of the state. A nation that arms itself
+              without restraint cannot sustain peace. The proliferation of firearms has made safety a
+              privilege rather than a guarantee, weakening the trust between citizens and their
+              institutions.
+            </p>
+            <p>
+              The Coalition supports strict licensing, comprehensive background checks, training
+              requirements, and standardized national data on gun ownership and violence. Weapons of
+              war do not belong in civilian hands. The Coalition affirms that responsible ownership is
+              possible — but only within a framework that treats firearms as serious tools of defense,
+              not casual consumer goods.
+            </p>
+            <p>
+              By reclaiming the Second Amendment as a disciplined civic responsibility, the Phoenix
+              Coalition seeks to protect both public safety and institutional legitimacy. Freedom is
+              safeguarded not by chaos, but by order and accountability.
+            </p>
+          </article>
+
+          <!-- Foreign Policy -->
+          <article id="foreign-policy">
+            <div class="platform-tag">
+              <span class="dot"></span>Foreign Policy
+            </div>
+            <h3>Foreign Policy</h3>
+            <p>
+              The United States has long stood as a dominant global power, shaping international
+              politics through economic, diplomatic, and military influence. This position has yielded
+              significant benefits in global trade, security, and alliances. However, it has also
+              fostered instability through excessive intervention and the misuse of military strength.
+            </p>
+            <p>
+              Throughout history, the United States has often acted as a self-appointed global arbiter,
+              engaging in conflicts that lie beyond its direct interests. Such actions expand both
+              alliances and hostilities, entangling the nation in disputes that drain resources and
+              credibility. The Phoenix Coalition strongly believes that American foreign policy must
+              shift from reactive dominance to measured strategy.
+            </p>
+            <p>
+              Foreign policy defines the stability and security of the nation. When military and
+              economic resources are overextended, domestic priorities suffer. The Coalition recognizes
+              that unchecked global involvement weakens the very foundation it aims to protect.
+              The United States has engaged militarily in dozens of foreign operations since 1945,
+              often without achieving lasting peace or strategic gain. The Iraq War of 2003 exemplifies
+              this failure: launched on unfounded claims of weapons of mass destruction, the
+              intervention cost trillions of dollars, claimed hundreds of thousands of lives, and
+              diminished American credibility among allies. Overextension transforms power into
+              vulnerability.
+            </p>
+            <p>
+              The Phoenix Coalition will uphold a foreign policy grounded in rationality, restraint,
+              and precision. Military power is essential, but it must be wielded with calculation, not
+              emotion. The Coalition rejects impulsive interventions and advocates for decisions based
+              on verified intelligence, transparent objectives, and defined outcomes. Strategic
+              patience is not weakness; it is the highest form of strength.
+            </p>
+            <p>
+              The Coalition supports maintaining alliances through diplomacy and mutual interest while
+              avoiding dependency or entanglement. Foreign engagement must serve national security and
+              economic stability, not ideology. Military deployment will require clear objectives,
+              limited scope, and periodic review to prevent prolonged conflicts.
+            </p>
+            <p>
+              National resources will be allocated proportionally between defense, domestic
+              infrastructure, and research, ensuring that no single sector undermines another.
+              The Coalition will invest in cyber defense, intelligence coordination, and diplomatic
+              channels that prioritize preemptive stability over reactionary warfare.
+            </p>
+            <p>
+              The Coalition will institutionalize decision-making, evaluating all foreign interventions
+              thoroughly before deployment. We will operate on verified intelligence and cost–benefit
+              analysis, ensuring that no decision is driven by political expediency or public emotion.
+              The Coalition affirms that security can only be achieved through cooperation,
+              intelligence-sharing, and targeted precision — rejecting all broad, indefinite conflicts.
+            </p>
+            <p>
+              The Coalition will hold domestic equilibrium as the foundation of international
+              strength. A nation fragmented at home cannot command respect abroad. Investments in
+              education, technology, and infrastructure will enhance the credibility of American
+              leadership by example rather than force. The Coalition rejects the illusion that constant
+              intervention equals global influence. True power is measured by stability, endurance, and
+              the respect of nations who see the United States as a model of order.
+            </p>
+          </article>
+
+          <!-- Immigration -->
+          <article id="immigration">
+            <div class="platform-tag">
+              <span class="dot"></span>Immigration
+            </div>
+            <h3>Immigration</h3>
+            <p>
+              The Phoenix Coalition views immigration as both a national strength and a structural
+              responsibility. A stable nation must manage its borders with discipline and its values
+              with consistency. The Coalition rejects the false binary between open borders and closed
+              doors. It recognizes that immigration, when lawful and regulated, strengthens the
+              economy, diversifies innovation, and reinforces our national character of perseverance
+              and enterprise.
+            </p>
+            <p>
+              At the same time, uncontrolled or inconsistent immigration policy erodes public trust,
+              weakens labor standards, and undermines the rule of law. The Coalition holds that the
+              rule of law is the foundation of fairness. A government that enforces laws selectively
+              encourages both disorder and resentment.
+            </p>
+            <p>
+              Therefore, the Coalition supports immigration systems that are transparent, merit-based,
+              and humane. Enforcement must be firm yet efficient, ensuring that those who enter do so
+              legally and that violations of immigration law are swiftly addressed through structured,
+              due-process mechanisms. However, enforcement must also be humane and fair, rejecting
+              cruelty and discrimination as tools of deterrence.
+            </p>
+            <p>
+              The Coalition supports the modernization of our archaic, overwhelmed immigration
+              infrastructure. Upgrades include digital visa tracking, updated employment verification
+              systems, and increased staffing for immigration courts to reduce backlogs. It also
+              supports a streamlined legal pathway for workers and families who contribute to the
+              economy, satisfying critical labor shortages in agriculture, technology, and healthcare.
+            </p>
+            <p>
+              Studies have shown that legal immigrants contribute billions in tax revenue and start
+              businesses at higher rates than native-born citizens. For these reasons, immigration
+              policy must reward contribution and compliance rather than perpetuate inefficiency or
+              fear.
+            </p>
+          </article>
+
+          <!-- Abortion -->
+          <article id="abortion">
+            <div class="platform-tag">
+              <span class="dot"></span>Abortion
+            </div>
+            <h3>Abortion</h3>
+            <p>
+              The Phoenix Coalition believes that the issue of abortion is one of personal autonomy,
+              responsibility, and moral order. While the Coalition recognizes the importance of
+              safeguarding individual rights and personal choices, it also believes that laws should
+              provide clear, predictable boundaries that protect the health of both individuals and
+              society.
+            </p>
+            <p>
+              The Coalition’s stance on abortion is grounded in the principle that personal freedom
+              must be protected, but personal responsibility should also be acknowledged. The party
+              supports a legal right to abortion within the framework of a regulated, ethical, and
+              transparent system. This ensures that women have access to safe, legal healthcare options
+              while also addressing the complex moral, social, and public health aspects of the issue.
+            </p>
+            <p>
+              Abortion, the Coalition believes, should be available to those who need it, but it should
+              not be viewed as a carefree or unrestricted decision. There must be respect for both the
+              autonomy of the individual and the moral values of society.
+            </p>
+            <p>
+              The Coalition supports the right to choose up to a reasonable point in pregnancy,
+              acknowledging that early-stage abortions are a necessary part of protecting individual
+              autonomy and health. However, as a pregnancy progresses, the state has a legitimate
+              interest in regulating the procedure more strictly to balance the health and safety of
+              the mother with the ethical considerations surrounding the potential life of the fetus.
+              The second trimester, in particular, requires careful consideration of both public health
+              and individual liberty.
+            </p>
+            <p>
+              The Phoenix Coalition opposes unrestricted abortion practices of the past, which allowed
+              for late-term procedures to be performed without stringent medical oversight or clear
+              necessity. However, the Coalition also opposes total bans on abortion, recognizing that
+              such laws would harm women’s rights and force the nation into a regressive, authoritarian
+              stance that undermines both personal freedom and public health.
+            </p>
+            <p>
+              To ensure balanced and effective regulation, the Coalition advocates for comprehensive
+              sex education and contraceptive access as primary tools in preventing unwanted
+              pregnancies; increased support for maternal health including prenatal care and mental
+              health services; a national health policy that allows for a reasonable waiting period and
+              counseling for those seeking an abortion; and guaranteed safe and legal procedures for
+              those in need.
+            </p>
+          </article>
+
+          <!-- Economy -->
+          <article id="economy">
+            <div class="platform-tag">
+              <span class="dot"></span>The Economy
+            </div>
+            <h3>The Economy</h3>
+            <p>
+              The United States has grappled with chronic economic instability characterized by
+              inflationary pressures, unequal distribution of wealth, and unsustainable federal debt.
+              Economic turbulence has deepened the divide between owners of capital and waged workers,
+              making business and worker certainties a thing of the past. Real GDP growth has slowed,
+              while inflation has eroded the purchasing power of millions of households. Meanwhile,
+              public debt has climbed into the tens of trillions of dollars, creating long-term risks
+              to national solvency and economic sovereignty.
+            </p>
+            <p>
+              The economy’s current structure too often rewards speculation over production and
+              short-term profit over sustainable growth. Economic disorder has weakened the foundations
+              of national stability. When markets are allowed to run amok and there is no coherent
+              government policy, inequality deepens and social trust erodes. A majority of Americans
+              now live paycheck to paycheck, while the top 10 percent of earners hold a dominant share
+              of household wealth. Such disparity undermines economic mobility and public confidence in
+              capitalism itself.
+            </p>
+            <p>
+              Persistent inflation and budgetary irresponsibility also weaken national defense and
+              infrastructure, forcing dependence on foreign debt holders. A strong economy is not merely
+              a matter of market performance but one of resilience, fairness, and accountability.
+            </p>
+            <p>
+              The Phoenix Coalition aims to ensure that a disciplined economy forms the bedrock of a
+              free society. Economic power must be exercised with the same precision as political power:
+              openly, effectively, and with accountability. The Coalition will work toward a mixed-market
+              system in which private enterprise can flourish under fair regulation, while public
+              institutions play a stabilizing role — never as competitors.
+            </p>
+            <p>
+              The party is opposed to untrammeled corporate concentration and irresponsible government
+              spending alike, seeing either extreme as threatening national independence. Prosperity
+              must come from productivity and ingenuity, not manipulation. Economic growth should reward
+              work, foster self-reliance, and reinforce long-term national well-being.
+            </p>
+            <p>
+              The Phoenix Coalition stands for fiscal responsibility through balanced budgets, targeted
+              taxation, and responsible investment. Corporate tax loopholes that reward offshore
+              profit-shifting will be closed. Small and mid-sized businesses will be incentivized
+              through domestic production and apprenticeship programs. Investments in technical
+              training yield higher wage growth and productivity over time compared with broad tax
+              cuts, and the Coalition will align economic policy with this reality.
+            </p>
+            <p>
+              The Coalition will reinforce antitrust enforcement to ensure proper competition in key
+              industries such as technology, agriculture, and energy. Federal public spending will focus
+              on modernizing infrastructure, developing renewable energy, and providing national
+              supply-chain security. Federal investment will be tied directly to measurable outcomes to
+              ensure accountability for every dollar spent.
+            </p>
+            <p>
+              The Coalition also supports monetary stability through coordination between fiscal policy
+              and the Federal Reserve. Excessive stimulus and speculative credit expansion will be
+              avoided in favor of sustainable interest-rate management and prudent lending standards.
+              Economic freedom is preserved not through deregulation but through balance. Markets must
+              serve the public good, not dominate it.
+            </p>
+            <p>
+              The Phoenix Coalition believes in an economy that rewards discipline and modesty,
+              cultivation instead of spectacle. Financial strength is a matter of national security and
+              moral obligation. With balanced budgets, open markets, and productive investment, the
+              Coalition affirms that stability is not the enemy of prosperity but its foundation.
+            </p>
+          </article>
+
+          <!-- Environment -->
+          <article id="environment">
+            <div class="platform-tag">
+              <span class="dot"></span>The Environment
+            </div>
+            <h3>The Environment</h3>
+            <p>
+              The United States faces increasing environmental threats from rising global temperatures,
+              limited resources, and intensifying natural disasters. Recent years have seen record
+              numbers of billion-dollar weather events. Meanwhile, carbon emissions continue to rise,
+              and the scarcity of water endangers agricultural and industrial output. These challenges
+              are worsened by inconsistent policy and fragmented enforcement, where environmental
+              protection is treated as a matter of political cycles rather than national strategy.
+            </p>
+            <p>
+              Current practices are uncoordinated, data is imprecise, and there is no long-term focus.
+              Environmental instability threatens not only ecosystems but also economic growth, national
+              security, and public health. Climate-related disasters cost the United States hundreds of
+              billions of dollars annually, burdening taxpayers, stretching emergency systems beyond
+              their limits, and reducing agricultural yields.
+            </p>
+            <p>
+              Pollution and unsafe air quality disproportionately affect working-class and rural
+              communities, exacerbating the very inequality the Coalition strives to eradicate. A
+              disordered environment yields disordered governance. If nothing is done at the structural
+              level, the country’s ability to maintain energy independence and food security will
+              degrade, undermining sovereignty and social stability.
+            </p>
+            <p>
+              For the Phoenix Coalition, environmental policy is a matter of national discipline, not
+              ideological debate. The environment is not a moral battleground but a logistical
+              responsibility. The Coalition disavows both unrestricted exploitation of natural
+              resources and poorly coordinated regulatory overreach.
+            </p>
+            <p>
+              The Coalition supports a framework of strategic sustainability in which protecting the
+              environment and achieving industrial development are complementary goals. Resource
+              management should be informed by science, accountability, and technological innovation —
+              not partisan inclination. A strong environment is the precondition of a strong economy.
+            </p>
+            <p>
+              The Coalition supports a national transition to energy that is reliable, independent, and
+              efficient. Renewable development will be initiated using federal incentives tied to
+              measurable benchmarks for carbon reductions. The Coalition will seek to safely increase
+              the share of renewable energy without compromising grid stability, while investing in
+              nuclear energy, advanced battery storage, and carbon-capture technologies.
+            </p>
+            <p>
+              To protect natural resources, the Coalition advocates for modernized water infrastructure
+              and stricter enforcement of pollution controls, particularly in manufacturing and
+              agriculture. Federal agencies will coordinate under a single Environmental Data Command
+              to monitor emissions, deforestation, and resource extraction in real time. This
+              precision-based model replaces reactive policy with proactive management.
+            </p>
+            <p>
+              The Coalition will also tie corporate sustainability standards to tax incentives,
+              rewarding measurable environmental responsibility rather than symbolic compliance. The
+              Phoenix Coalition believes that environmental order is inseparable from economic and
+              social order. Preservation without structure leads to inefficiency, while progress
+              without restraint leads to collapse.
+            </p>
+            <p>
+              Guided by science-based regulation, innovation, and long-term planning, the Coalition
+              envisions a nation that treats environmental stewardship as an act of governance, not
+              charity. Sustainability is not a slogan — it is a system, one built to endure.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hunger Games plank (separate section for clarity) -->
+    <section id="hunger-games" aria-label="Position on the Hunger Games">
+      <div class="section-header">
+        <span class="pill-label">Special Plank</span>
+        <h2 class="section-title">The Hunger Games</h2>
+        <p class="section-kicker">
+          Rooted in the fictional universe of <em>The Hunger Games</em>, this plank addresses the
+          moral and political failure represented by the Games — and what the Coalition stands for
+          instead.
+        </p>
+      </div>
+
+      <article class="card">
+        <h3>Condemning the Games, Rebuilding Legitimate Order</h3>
+        <p>
+          The Coalition strongly condemns the Hunger Games as an immoral and inefficient use of
+          power that betrays the principles of order, justice, and liberty. The Games represent the
+          corruption of governance — the transformation of law into spectacle and control into
+          cruelty. A government that claims to preserve peace through ritualized violence does not
+          enforce order; it destroys it.
+        </p>
+        <p>
+          The Coalition holds that true stability cannot be achieved through fear. Order must arise
+          from legitimacy, not coercion. The Games eroded both, turning citizens into participants in
+          their own subjugation. Such institutions degrade the moral foundation of our nation and
+          divert resources away from legitimate interests.
+        </p>
+        <p>
+          The Coalition maintains that the preservation of social order must never come at the
+          expense of human dignity. Crime and rebellion are symptoms of imbalance, not excuses for
+          oppression. The Hunger Games, in their waste and barbarity, exemplify the failure of
+          leadership that persists today. The Phoenix Coalition stands for disciplined, data-driven
+          governance, not spectacle or cruelty.
+        </p>
+      </article>
+    </section>
+
+    <!-- Works Cited -->
+    <section id="works-cited" aria-label="Plank Works Cited">
+      <div class="section-header">
+        <span class="pill-label">Plank Works Cited</span>
+        <h2 class="section-title">Works Cited</h2>
+        <p class="section-kicker">
+          Sources that inform and support the Phoenix Coalition platform, organized by issue area
+          as outlined in the Political Campaign Project.
+        </p>
+      </div>
+
+      <div class="works-grid">
+        <!-- Criminal Justice -->
+        <article class="works-card">
+          <h3>Criminal Justice Reform</h3>
+          <p>
+            Brennan Center for Justice. <em>Ending Mass Incarceration: Charting a New Justice
+            Reinvestment.</em> Brennan Center for Justice, 2023.
+          </p>
+          <p>
+            Council on Criminal Justice. <em>Crime Trends Working Group: Roadmap to Improve
+            National Crime Data.</em> Council on Criminal Justice, 2022.
+          </p>
+          <p>
+            National Institute of Justice. <em>Recidivism.</em> U.S. Department of Justice, Office of
+            Justice Programs, 2022.
+          </p>
+          <p>
+            Stockholm International Peace Research Institute (SIPRI). <em>Prison Population Data:
+            United States.</em> SIPRI Yearbook Online, 2023.
+          </p>
+          <p>
+            University of Michigan. <em>Justice Outcomes Explorer: New Data Dashboard on the U.S.
+            Criminal Justice System.</em> University of Michigan News, 2024.
+          </p>
+          <p>
+            “Incarceration &amp; Reentry | ASPE.” U.S. Bureau of Justice Statistics, U.S. Department
+            of Justice.
+          </p>
+        </article>
+
+        <!-- Second Amendment -->
+        <article class="works-card">
+          <h3>Second Amendment Rights</h3>
+          <p>
+            “Second Amendment.” <em>Encyclopaedia Britannica</em>, Encyclopaedia Britannica, Inc.
+          </p>
+          <p>
+            “Second Amendment.” Legal Information Institute, Cornell Law School.
+          </p>
+          <p>
+            Yang, Andrew. “The Real Solution to Gun Violence May Be the Second Amendment Itself.”
+            <em>CNN</em>, 7 Aug. 2019.
+          </p>
+          <p>
+            “Gun Violence Solutions.” Johns Hopkins Center for Gun Violence Solutions, Johns Hopkins
+            Bloomberg School of Public Health.
+          </p>
+          <p>
+            “Reducing Gun Violence.” U.S. Department of Justice.
+          </p>
+          <p>
+            Brady United Against Gun Violence. “Gun Violence Statistics.” Brady United.
+          </p>
+        </article>
+
+        <!-- Education -->
+        <article class="works-card">
+          <h3>Education</h3>
+          <p>
+            Office of Apprenticeship. “Homepage.” <em>Apprenticeship.gov</em>.
+          </p>
+          <p>
+            Handres, Brandi. “ACTE.” <em>ACTE</em>, 11 June 2018.
+          </p>
+          <p>
+            National Center for Education Statistics. “National Center for Education Statistics
+            (NCES) Home Page, Part of the U.S. Department of Education.” NCES, 2025.
+          </p>
+          <p>
+            APM Research Lab. “Adult Literacy Numbers.” <em>APM Research Lab</em>, 2022.
+          </p>
+          <p>
+            U.S. Department of Labor. “Home | U.S. Department of Labor.” <em>dol.gov</em>, 2023.
+          </p>
+        </article>
+
+        <!-- Healthcare -->
+        <article class="works-card">
+          <h3>Healthcare &amp; Pharmaceutical Regulation</h3>
+          <p>
+            International Society of Aesthetic Plastic Surgery. “2023 Global Survey on
+            Aesthetic/Cosmetic Procedures.” ISAPS, 2023.
+          </p>
+          <p>
+            “2023 Procedural Statistics Report Finds Growth in Cosmetic Surgery Amidst Economic
+            Uncertainty.” <em>The Aesthetic Guide</em>, 2023.
+          </p>
+          <p>
+            “Deaths of U.S. Citizens Undergoing Cosmetic Surgery — Dominican Republic, 2009–2022.”
+            <em>MMWR</em>, vol. 73, no. 3, 2024.
+          </p>
+          <p>
+            “Number of Registered Clinical Studies Worldwide by Location.” <em>Statista</em>,
+            June 2025.
+          </p>
+          <p>
+            “Pharmaceutical Industry Statistics.” <em>Gitnux</em>, 2024.
+          </p>
+          <p>
+            “Pharma Industry Statistics.” <em>Zipdo</em>, 2024.
+          </p>
+          <p>
+            “U.S. Pharmaceutical Industry Statistics.” <em>Coolest Gadgets</em>, 2024.
+          </p>
+          <p>
+            “Prescription Drug Abuse Statistics [2025].” <em>Drug Abuse Statistics</em>, 2025.
+          </p>
+          <p>
+            “Prevalence of Illegal Use of Prescription Drugs in the U.S.” <em>Drug Policy Facts</em>,
+            2024.
+          </p>
+          <p>
+            “The Drugged Society: The Effects of Prescription Drug Abuse.” AA London, 2024.
+          </p>
+        </article>
+
+        <!-- Foreign Policy -->
+        <article class="works-card">
+          <h3>Foreign Policy</h3>
+          <p>
+            “Our Issues.” Foreign Policy for America.
+          </p>
+          <p>
+            Poushter, Jacob, and Laura Clancy. “Americans’ Top Foreign Policy Priorities in 2024.”
+            Pew Research Center, 23 April 2024.
+          </p>
+        </article>
+
+        <!-- Immigration -->
+        <article class="works-card">
+          <h3>Immigration</h3>
+          <p>
+            “DHS Removes More than Half a Million Illegal Aliens From US.” Homeland Security, 27
+            October 2025.
+          </p>
+          <p>
+            “How Many People Are Deported From the US Each Year?” <em>USAFacts</em>, 2025.
+          </p>
+          <p>
+            “Trump’s Second Term Aimed to Stop Border Crossings, With Sweeping Deportations
+            Nationwide.” <em>NBC News</em>, 6 October 2025.
+          </p>
+        </article>
+
+        <!-- Economy -->
+        <article class="works-card">
+          <h3>The Economy</h3>
+          <p>
+            Bureau of Economic Analysis. <em>Gross Domestic Product, Fourth Quarter and Year 2023
+            (Advance Estimate).</em> U.S. Department of Commerce, 25 Jan. 2024.
+          </p>
+          <p>
+            Economic Policy Institute. <em>Apprenticeships and Workforce Training: Strategies for
+            Shared Prosperity.</em> Economic Policy Institute, 2023.
+          </p>
+          <p>
+            Federal Reserve. <em>Economic Well-Being of U.S. Households in 2023.</em> Board of
+            Governors of the Federal Reserve System, May 2024.
+          </p>
+          <p>
+            U.S. Department of the Treasury. <em>Debt to the Penny.</em> FiscalData.gov, 2024.
+          </p>
+        </article>
+
+        <!-- Environment -->
+        <article class="works-card">
+          <h3>The Environment</h3>
+          <p>
+            National Oceanic and Atmospheric Administration (NOAA). <em>U.S. 2023 Billion-Dollar
+            Weather and Climate Disasters.</em> National Centers for Environmental Information,
+            8 Jan. 2024.
+          </p>
+          <p>
+            U.S. Department of Energy. <em>Renewable Energy Data Book: 2023.</em> Office of Energy
+            Efficiency and Renewable Energy, 2024.
+          </p>
+          <p>
+            World Bank. <em>Country Climate and Development Report: United States of America.</em>
+            World Bank Group, 2023.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact / Call to action -->
+    <section id="contact" aria-label="Support and contact">
+      <div class="contact-card">
+        <div>
+          <h3>Join The Phoenix Coalition</h3>
+          <p>
+            The Phoenix Coalition is committed to rebuilding a nation worthy of its citizens —
+            disciplined, fair, and free. From criminal justice to healthcare, from foreign policy to
+            the environment, our planks are designed for a post-war society that refuses to repeat
+            the failures of the past.
+          </p>
+          <p>
+            Whether you connect as a volunteer, a policy mind, or a supporter, you are part of the
+            rebuilding process. Order, justice, and liberty are not abstract ideals; they are systems
+            we build together.
+          </p>
+        </div>
+        <div class="contact-meta">
+          <p><strong>Key Contacts</strong></p>
+          <p>
+            <strong>Webmaster · Criminal Justice:</strong><br />
+            Sandhya — <a href="mailto:ssrimathirmala@cheshire.k12.ct.us">
+              ssrimathirmala@cheshire.k12.ct.us
+            </a> · 203-715-2675
+          </p>
+          <p>
+            <strong>Campaign Manager · Immigration:</strong><br />
+            Touraj — <a href="mailto:trajabipour@cheshire.k12.ct.us">
+              trajabipour@cheshire.k12.ct.us
+            </a> · 475-255-8018
+          </p>
+          <p>
+            <strong>Press Secretary · Education:</strong><br />
+            Naman — <a href="mailto:narora@cheshire.k12.ct.us">
+              narora@cheshire.k12.ct.us
+            </a> · 203-558-7197
+          </p>
+          <p style="margin-top:0.6rem;">
+            <strong>Motto:</strong> Charcoal for stability. Ember for resilience. Three stars for
+            law, justice, and order.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      &copy; The Phoenix Coalition — Campaign Project Website. Inspired by
+      <em>The Hunger Games</em> universe for educational purposes.
+    </div>
+    <div>
+      <a href="#top" class="to-top">Back to top ↑</a>
+    </div>
+  </footer>
 </body>
-
 </html>
